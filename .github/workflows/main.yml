@@ -21,8 +21,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f DiceYacht_Project_v1.0.6.zip || (echo "DiceYacht_Project_v1.0.6.zip is missing from the repository root." && exit 1)
-          unzip -t DiceYacht_Project_v1.0.6.zip
+          test -f DiceYacht_Project_v1.0.7.zip || (echo "DiceYacht_Project_v1.0.7.zip is missing from the repository root." && exit 1)
+          unzip -t DiceYacht_Project_v1.0.7.zip
 
       - name: Extract Dice Yacht project
         shell: bash
@@ -30,7 +30,7 @@ jobs:
           set -euo pipefail
           rm -rf android-source
           mkdir android-source
-          unzip -q DiceYacht_Project_v1.0.6.zip -d android-source
+          unzip -q DiceYacht_Project_v1.0.7.zip -d android-source
           test -f android-source/settings.gradle
           test -f android-source/build.gradle
           test -f android-source/app/build.gradle
@@ -76,13 +76,13 @@ jobs:
         run: |
           set -euo pipefail
           test -f android-source/app/build/outputs/apk/debug/app-debug.apk
-          cp android-source/app/build/outputs/apk/debug/app-debug.apk DiceYacht-1.0.6.apk
-          ls -lh DiceYacht-1.0.6.apk
+          cp android-source/app/build/outputs/apk/debug/app-debug.apk DiceYacht-1.0.7.apk
+          ls -lh DiceYacht-1.0.7.apk
 
       - name: Upload installable APK
         uses: actions/upload-artifact@v4
         with:
-          name: DiceYacht-Android-1.0.6
-          path: DiceYacht-1.0.6.apk
+          name: DiceYacht-Android-1.0.7
+          path: DiceYacht-1.0.7.apk
           if-no-files-found: error
           retention-days: 30
